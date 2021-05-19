@@ -1,17 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ProductComponent } from '../src/Product/ProductComponent';
+import { HomeComponent } from '../src/Home/HomeComponent';
+
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        
-      </header>
+      {/* <header className="App-header"> */}
+        {/* <HomeComponent /> */}
+      {/* </header> */}
+      
+      {/* <Switch> */}
+          <Route exact path='/e-commerse'>
+            <HomeComponent />
+          </Route>
+          <Route path='/e-commerse/product'>
+            <ProductComponent />
+          </Route>
+        {/* </Switch> */}
+
     </div>
+    
+    </Router>
   );
 }
 
