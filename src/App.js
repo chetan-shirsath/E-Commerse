@@ -4,7 +4,7 @@ import { ProductComponent } from '../src/Product/ProductComponent';
 import { HomeComponent } from '../src/Home/HomeComponent';
 import { ErrorPageComponent } from '../src/ErrorPage/ErrorPageComponent';
 import { CartComponent } from '../src/Cart/CartComponent';
-import { NavBarComponent } from './NavBar/NavBarComponent';
+import  NavBarComponent  from './NavBar/NavBarComponent';
 
 
 function App() {

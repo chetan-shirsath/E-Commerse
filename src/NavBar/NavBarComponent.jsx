@@ -3,8 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 // import { Link } from 'react-router-dom'; 
 
-export class NavBarComponent extends React.Component{
-    render(){
+function NavBarComponent (){
         return <Navbar bg="light" expand="lg">
         <Navbar.Brand href="/e-commerse">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,5 +25,6 @@ export class NavBarComponent extends React.Component{
           </Form>
         </Navbar.Collapse>
       </Navbar>
-    }
 }
+
+export default NavBarComponent;
