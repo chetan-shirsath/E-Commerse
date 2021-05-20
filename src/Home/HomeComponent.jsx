@@ -1,4 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import getCategories from '../CommonServices/ProductServices';
+
+// import ProductComponent from '../Product/ProductComponent';
 
 export class HomeComponent extends React.Component{
 
@@ -11,25 +15,28 @@ export class HomeComponent extends React.Component{
         };
       }
 
-      componentDidMount(){
-        this.getCategories()
+      componentDidMount = () => {
+        this.getCategory();
       }
-      async getCategories(){
-        const response = await fetch(this.baseUrl);
-        const data = await response.json();
-        console.log(data);
-        this.setState({ items: data })
+     getCategory(){
+      console.log(getCategories());
+      //  await getCategories()
+      //   .then(data => {
+      //     console.log(data);
+      //     this.setState({items: data});
+      //   });
+        // console.log(this.state.items);
       }
-      render(){ 
-          const { items } = this.state; 
+
+      render(){  
           return <div className="body">
-          {/* <!-- <a routerLink="/product" (click) = "productCategory(category)" routerLinkActive="active" *ngFor="let category of categories" class="card"> --> */}
-          {items.map((item, index) => (
-            <a href="/e-commerse/product" className="card">
+          {/* <!-- <a routerLink="/product" (click) = "productCategory(category)" routerLinkActive="active" *ngFor="let category of categories" class="card"> --> onClick={() => this.getProducts(item)} */}
+          {this.state.items.map((category, index) => (
+            <Link to={`/e-commerse/product/${category}`} key={index}  className="card">
                 <div className="container">
-              <h3 key={index}>{item}</h3>
+              <h3>{category}</h3>
             </div>
-          </a>
+          </Link>
           ))}
       </div>
       }

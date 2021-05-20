@@ -16,9 +16,9 @@ function App() {
           <Route exact path='/e-commerse'>
             <HomeComponent />
           </Route>
-          <Route path='/e-commerse/product'>
-            <ProductComponent />
-          </Route>
+          <Route path='/e-commerse/product/:category' component={ProductComponent} />
+            {/* <ProductComponent /> */}
+          {/* </Route> */}
         {/* </Switch> */}
 
     </div>
