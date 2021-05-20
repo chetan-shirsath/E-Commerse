@@ -4,9 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Button, CardDeck } from 'react-bootstrap';
 import { getProducts } from '../CommonServices/ProductServices';
 import { Link } from 'react-router-dom';
-// import { Route } from 'react-router';
-// import { ErrorPageComponent } from '../ErrorPage/ErrorPageComponent';
-// import { navigate } from "@reach/router";
 
 export class ProductComponent extends React.Component{
 
