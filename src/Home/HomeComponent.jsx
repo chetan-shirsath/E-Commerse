@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import getCategories from '../CommonServices/ProductServices';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card, Button} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+// import { navigate } from '@reach/router';
 export class HomeComponent extends React.Component{
 
     constructor(props) {
@@ -15,13 +16,15 @@ export class HomeComponent extends React.Component{
       componentDidMount = () => {
         this.getCategory();
       }
+
      getCategory(){
-      getCategories()
-      .then(data => this.setState({items: data}));
+        getCategories()
+          .then(data => this.setState({items: data}))
+          .catch(error => console.log(error));
       }
 
       render(){  
-          return <div className="body">
+          return <div>
                     {this.state.items.map((category, index) => (
                       <Card key = {index} style={{ width: '18rem' }}>
                         <Link to={`/e-commerse/product/${category}`}>
