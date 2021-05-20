@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import getCategories from '../CommonServices/ProductServices';
-
-// import ProductComponent from '../Product/ProductComponent';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Card, Button} from 'react-bootstrap';
 export class HomeComponent extends React.Component{
-
-  baseUrl = 'https://fakestoreapi.com/products/categories';
 
     constructor(props) {
         super(props);
@@ -19,25 +16,25 @@ export class HomeComponent extends React.Component{
         this.getCategory();
       }
      getCategory(){
-      console.log(getCategories());
-      //  await getCategories()
-      //   .then(data => {
-      //     console.log(data);
-      //     this.setState({items: data});
-      //   });
-        // console.log(this.state.items);
+      getCategories()
+      .then(data => this.setState({items: data}));
       }
 
       render(){  
           return <div className="body">
-          {/* <!-- <a routerLink="/product" (click) = "productCategory(category)" routerLinkActive="active" *ngFor="let category of categories" class="card"> --> onClick={() => this.getProducts(item)} */}
-          {this.state.items.map((category, index) => (
-            <Link to={`/e-commerse/product/${category}`} key={index}  className="card">
-                <div className="container">
-              <h3>{category}</h3>
-            </div>
-          </Link>
-          ))}
-      </div>
+                    {this.state.items.map((category, index) => (
+                      <Card key = {index} style={{ width: '18rem' }}>
+                        <Link to={`/e-commerse/product/${category}`}>
+                        <Card.Body>
+                          <Card.Title>{category}</Card.Title>
+                          {/* <Card.Text>
+                          {item.description}
+                          </Card.Text> */}
+                          {/* <Button variant="primary">{item.price}</Button> */}
+                        </Card.Body>
+                        </Link>
+                      </Card>
+                    ))}
+                  </div>      
       }
 }
