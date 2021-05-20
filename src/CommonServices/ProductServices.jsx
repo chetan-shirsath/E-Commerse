@@ -1,20 +1,15 @@
+const baseUrl = 'https://fakestoreapi.com/products';
 
-export const getCategories = async () => {
-    console.log(`${baseUrl}/categories`);
+const getCategories = async () => {
     const response = await fetch(`${baseUrl}/categories`);
-    const data = await response.json().then(dat => console.log(dat));
-    console.log(response);
-    console.log(data);
-
+    const data = await response.json();
     return data;
 }
+export default getCategories;
 
-const baseUrl = 'https://fakestoreapi.com/products';
-const getProducts = async (category) => {
+export const getProducts = async (category) => {
         const response = await fetch(`${baseUrl}/category/${category}`);
         const data = await response.json();   
         return data;
 }
-export default getProducts;
 
-// export getCategories;

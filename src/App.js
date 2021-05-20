@@ -11,16 +11,10 @@ function App() {
       {/* <header className="App-header"> */}
         {/* <HomeComponent /> */}
       {/* </header> */}
-      
-      {/* <Switch> */}
           <Route exact path='/e-commerse'>
             <HomeComponent />
           </Route>
           <Route path='/e-commerse/product/:category' component={ProductComponent} />
-            {/* <ProductComponent /> */}
-          {/* </Route> */}
-        {/* </Switch> */}
-
     </div>
     
     </Router>
