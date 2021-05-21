@@ -2,9 +2,10 @@ import './App.css';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { ProductComponent } from '../src/Product/ProductComponent';
 import { HomeComponent } from '../src/Home/HomeComponent';
-import { ErrorPageComponent } from '../src/ErrorPage/ErrorPageComponent';
-import { CartComponent } from '../src/Cart/CartComponent';
+import  ErrorPageComponent  from '../src/ErrorPage/ErrorPageComponent';
+import  {CartComponent}  from '../src/Cart/CartComponent';
 import  NavBarComponent  from './NavBar/NavBarComponent';
+// import CartComponent from './Cart/CartComponent';
 
 
 function App() {
