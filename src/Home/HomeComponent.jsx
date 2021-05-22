@@ -3,41 +3,47 @@ import { Link } from 'react-router-dom';
 import getCategories from '../CommonServices/ProductServices';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Form, FormControl } from 'react-bootstrap';
-export class HomeComponent extends React.Component{
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          items: [],
-          search: ""
-        };
-      }
+export default function HomeComponent() {
 
-      componentDidMount = () => {
-        this.getCategory();
-      }
+    // constructor(props) {
+        // super(props);
+        let [items, search] = useState([]);
+        // state = {
+        //   items: [],
+        //   search: ""
+        // };
+      // }
 
-      onChangeHandle = (txt) => {
-           this.setState({
-             search: txt
-           }); 
-      };
-     getCategory(){
-        getCategories()
-          .then(data => this.setState({items: data}))
-          .catch(error => console.log(error));
-        }
+    useEffect(() => {
+      getCategories()
+      .then(data => {})
+      .catch(error => console.log(error));
+      console.log(items);
+      })
 
-      render(){  
+      // getCategory = () => {
+      //   getCategories()
+      //     .then(data => this.setState({items: data}))
+      //     .catch(error => console.log(error));
+      //   }
+      // const getCategory = () => {
+      //   getCategories()
+      //     .then(data => items = data)
+      //     .catch(error => console.log(error));
+      //   }
+
           return <div className="body">
-            <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(txt) => this.onChangeHandle(txt.target.value)} />
-          </Form>
-                    {this.state.items.filter((item) => {
-                        if(this.state.search === "") 
+                  <Form inline>
+                  <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(txt) => search = txt.target.value} />
+                  </Form>
+                    {items.filter((item) => {
+                        if(search === "") 
                           return item;
                         else 
-                          if(item.toLowerCase().includes(this.state.search.toLowerCase())) 
+                          if(item.toLowerCase().includes(search.toLowerCase())) 
                                 return item;
                     }).map((category, index) => (
                       <Card key = {index} style={{ width: '18rem' }}>
@@ -53,5 +59,4 @@ export class HomeComponent extends React.Component{
                       </Card>
                     ))}
                   </div>      
-      }
 }
