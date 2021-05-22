@@ -1,18 +1,23 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import navigateToUrl from '../CommonServices/NavigationService';
+import { useHistory } from 'react-router-dom';
 // import { Link } from 'react-router-dom'; 
 
 function NavBarComponent (value, onChangeHandle){
-
+    const history = useHistory();
+      const changeUrl = (path) => {
+        navigateToUrl(history, path);
+      }
 
         return <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/e-commerse">React-Bootstrap</Navbar.Brand>
+        <Nav.Link onClick={() => changeUrl("")}>E-Commerse</Nav.Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse onToggle={() => true} id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/e-commerse">Home</Nav.Link>
-            <Nav.Link href="/e-commerse/cart">Cart</Nav.Link>
+            <Nav.Link onClick={() => changeUrl("")}>Home</Nav.Link>
+            <Nav.Link onClick={() => changeUrl("/cart")}>Cart</Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

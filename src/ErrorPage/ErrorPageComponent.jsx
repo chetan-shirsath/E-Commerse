@@ -1,16 +1,17 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import navigateToUrl from '../CommonServices/NavigationService';
 
 export default function ErrorPageComponent() {
     const history = useHistory();
-    const changeUrl = () =>{
-        history.push("/e-commerse");
+    const changeUrl = (path) =>{
+        navigateToUrl(history, path);
     }
         return (<div>
             <h1>Somthing is Wrong!</h1>
-            <Button onClick={changeUrl}>"Please Go Back!"</Button>
+            <Button onClick={() => changeUrl("")}>"Please Go Back!"</Button>
         </div>);
 }
