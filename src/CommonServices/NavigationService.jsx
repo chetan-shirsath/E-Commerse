@@ -1,5 +1,4 @@
 
-
 const basePath = "/e-commerse";
 export default function navigateToUrl(history, path) {
     if(path === "")
@@ -7,3 +6,8 @@ export default function navigateToUrl(history, path) {
     else
     history.push(basePath+path);
 }
+
+// export function navigateToUrlParams(history, path, state) {
+//     console.log("ike " +state);
+//     history.push(basePath+path, [state]);
+// }

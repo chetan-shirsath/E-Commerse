@@ -1,45 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import getCategories from '../CommonServices/ProductServices';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Form, FormControl } from 'react-bootstrap';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { Card } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import AllProducts from '../AllProducts/AllProducts';
+import getCategories from '../CommonServices/ProductServices';
 
 export default function HomeComponent() {
 
-    // constructor(props) {
-        // super(props);
-        let [items, search] = useState([]);
-        // state = {
-        //   items: [],
-        //   search: ""
-        // };
-      // }
+        const [search, setSearch] = useState("");
+        const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-      getCategories()
-      .then(data => {})
-      .catch(error => console.log(error));
-      console.log(items);
-      })
+      getcategories();
+    },[])
 
-      // getCategory = () => {
-      //   getCategories()
-      //     .then(data => this.setState({items: data}))
-      //     .catch(error => console.log(error));
-      //   }
-      // const getCategory = () => {
-      //   getCategories()
-      //     .then(data => items = data)
-      //     .catch(error => console.log(error));
-      //   }
+      const getcategories = () => {
+          getCategories()
+            .then(data => setCategories(data))
+            .catch(error => console.log(error));
+      }
 
+      // const onChangeUrl = (path, state) => {
+      //   console.log(state)
+      //   navigateToUrlParams(history, path, state);
+      // }
           return <div className="body">
-                  <Form inline>
-                  <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(txt) => search = txt.target.value} />
-                  </Form>
-                    {items.filter((item) => {
+                    {categories.filter((item) => {
                         if(search === "") 
                           return item;
                         else 
@@ -58,5 +45,6 @@ export default function HomeComponent() {
                         </Link>
                       </Card>
                     ))}
+                    <AllProducts categories={categories}/>
                   </div>      
 }

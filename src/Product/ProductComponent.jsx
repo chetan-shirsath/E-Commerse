@@ -1,46 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Products.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Button, CardDeck, CardGroup, CardColumns, FormControl, Form } from 'react-bootstrap';
+import { Card, Button, CardColumns } from 'react-bootstrap';
 import { getProducts } from '../CommonServices/ProductServices';
-import { Link } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import navigateToUrl from '../CommonServices/NavigationService';
 
-export class ProductComponent extends React.Component{
+export default function ProductComponent(props){
+  
+      const [products, setProducts] = useState([]);
+      const [search, setSearch] = useState("");
+      const history = useHistory();
+      const {category} = useParams();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          items: [],
-          category: this.props.match.params.category,
-          search: ""
-        };
-      }
 
-      componentDidMount = () => {
-        this.getProducts(this.state.category);
-      }
+      useEffect(() => {
+        getProduct(category);     
+      },[]);
 
-      getProducts(category){
+      const getProduct = (category) => {
         getProducts(category)
-          .then(data => this.setState({items: data}))
+          .then(data => setProducts(data))
           .catch(error => console.log(error));
       }
 
-      onChangeHandle = (txt) => {
-        this.setState({
-          search: txt
-        }); 
-   };
+      const changeUrl = (path) => {
+        navigateToUrl(history, path);
+      }
 
-      render(){
+  //     onChangeHandle = (txt) => {
+  //       this.setState({
+  //         search: txt
+  //       }); 
+  //  };
+
           return <div className="body">
-            <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(txt) => this.onChangeHandle(txt.target.value)} />
-          </Form>
+            
             <CardColumns>
-                    {this.state.items.filter((item) => {
-                        if(this.state.search === "") return item
-                        else if(item.title.toLowerCase().includes(this.state.search.toLowerCase()))
+                    {products.filter((item) => {
+                        if(search === "") return item
+                        else if(item.title.toLowerCase().includes(search.toLowerCase()))
                               return item;
                     }).map((item) => (
                       <Card key = {item.id} style={{ width: '18rem' }}>
@@ -51,11 +50,10 @@ export class ProductComponent extends React.Component{
                           {item.description}
                           </Card.Text>
                           <Button variant="primary">${item.price}</Button>
-                          <Button variant="primary"><Link to='/e-commerse/cart'>Add to cart</Link></Button>
+                          <Button onClick={() => changeUrl("/cart")}variant="primary">Add to cart</Button>
                         </Card.Body>
                       </Card>
                     ))}
               </CardColumns>
                  </div>
-      }
 }
