@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import navigateToUrl from '../CommonServices/NavigationService';
 

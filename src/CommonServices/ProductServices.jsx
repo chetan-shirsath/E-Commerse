@@ -13,12 +13,17 @@ export const getProducts = async (category) => {
         return data;
 }
 
-export const filterList = (txt, list) =>{
-    let newList = list.filter((item) => {
-        if(item ==="") {return item;}
-        else if(item.toLowerCase().includes(txt)) 
-            {return item;}
-    });
-    return newList;
-}
+// export const filterList = (txt, list) =>{
+//     let newList = list.filter((item) => {
+//         if(item ==="") {return item;}
+//         else if(item.toLowerCase().includes(txt)) 
+//             {return item;}
+//     });
+//     return newList;
+// }
 
+export const getAllProducts = async() => {
+        const response = await fetch(baseUrl);
+        const data = await response.json();
+        return data;
+}
