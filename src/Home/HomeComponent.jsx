@@ -26,6 +26,7 @@ export default function HomeComponent() {
       //   navigateToUrlParams(history, path, state);
       // }
           return <div className="body">
+            <span>
                     {categories.filter((item) => {
                         if(search === "") 
                           return item;
@@ -45,6 +46,7 @@ export default function HomeComponent() {
                         </Link>
                       </Card>
                     ))}
-                    <AllProducts categories={categories}/>
+                    </span>
+                    <span><AllProducts categories={categories}/> </span>
                   </div>      
 }
