@@ -23,29 +23,29 @@ export default function AllProducts(props){
     }
 
     return <div>
-        <NavDropdown title="Filter By" id="basic-nav-dropdown">
+        <NavDropdown title="Filter By" menuVariant="dark"  id="nav-dropdown-dark-example">
             <NavDropdown.Item onSelect={() => setFilterText("")}>All</NavDropdown.Item>
             {categories.map((category, index) => (
                 <NavDropdown.Item key={index} onSelect={() => setFilterText(category)}>{category}</NavDropdown.Item>
             ))}
         </NavDropdown>
-        <Table responsive>
-        <tr>
+        {/* <Table responsive>
+        <tr> */}
             {products.filter((item) => {
                 if(filterText === "") return item;
                 else if(filterText === item.category)
                         return item;
-            }).from({ length: 3 }).map((product) => (
-                <td key={product.id}>
-                <Card className="Cardbock">
+            }).map((product) => (
+                // <td key={product.id}>
+                <Card key={product.id} className="Cardbock">
                     <Card.Img variant="top" src={product.image} />
                     <Card.Body>
                         <Card.Title>{product.title}</Card.Title>
                     </Card.Body>
                 </Card>
-                </td>
+                // </td>
         ))}
-        </tr>
-        </Table>
+        {/* </tr> */}
+        {/* </Table> */}
             </div>
 }
