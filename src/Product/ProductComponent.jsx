@@ -42,7 +42,7 @@ export default function ProductComponent(props){
                         else if(item.title.toLowerCase().includes(search.toLowerCase()))
                               return item;
                     }).map((item) => (
-                      <Card key = {item.id} style={{ width: '18rem' }}>
+                      <Card key = {item.id} className="Cardbock" style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={item.image} />
                         <Card.Body>
                           <Card.Title>{item.title}</Card.Title>
